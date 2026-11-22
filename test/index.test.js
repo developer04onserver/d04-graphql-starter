@@ -1,0 +1,2 @@
+import test from "node:test"; import assert from "node:assert/strict"; import { createGraphQLService } from "../src/index.js";
+test("executes schema resolvers",async()=>{const service=createGraphQLService({typeDefs:"type Query { hello(name: String!): String! }",resolvers:{hello:({name})=>"Hello "+name}});const result=await service.execute('{ hello(name:"D04") }');assert.equal(result.data.hello,"Hello D04");});
